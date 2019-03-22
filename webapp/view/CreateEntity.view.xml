@@ -1,0 +1,95 @@
+<mvc:View controllerName="ztest100.controller.CreateEntity" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit ZXDEGUI0011_UI5_SRV.ZXDGUI_S0011LS_UI5': 'New ZXDEGUI0011_UI5_SRV.ZXDGUI_S0011LS_UI5'}">
+				<f:content>
+					<Label text="c" required="true"/>
+					<Input name="Uuid" id="Uuid_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Uuid', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:50, nullable:false } }"/>
+					<Label text="公司代碼" required="true"/>
+					<Input name="Bukrs" id="Bukrs_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Bukrs', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }"/>
+					<Label text="會計年度" required="true"/>
+					<Input name="Gjahr" id="Gjahr_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Gjahr', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }"/>
+					<Label text="文件號碼" required="true"/>
+					<Input name="Belnr" id="Belnr_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Belnr', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="明細項目" required="true"/>
+					<Input name="Buzei" id="Buzei_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Buzei', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:6, nullable:false } }"/>
+					<Label text="營業處" required="true"/>
+					<Input name="Bupla" id="Bupla_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Bupla', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }"/>
+					<Label text="發票號碼" required="true"/>
+					<Input name="Guino" id="Guino_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="true" visible="true"
+						value="{ path: 'Guino', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:14, nullable:false } }"/>
+					<Label text="發票格式" required="true"/>
+					<Input name="Guifmt" id="Guifmt_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Guifmt', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:2, nullable:false } }"/>
+					<Label text="過帳日期" required="true"/>
+					<DatePicker name="Budat" value="{ path: 'Budat', type: 'sap.ui.model.type.DateTime'}" id="Budat_id" type="DateTime"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"/>
+					<Label text="發票日期" required="true"/>
+					<DatePicker name="Guidate" value="{ path: 'Guidate', type: 'sap.ui.model.type.DateTime'}" id="Guidate_id" type="DateTime"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"/>
+					<Label text="客戶" required="true"/>
+					<Input name="Kunnr" id="Kunnr_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Kunnr', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="買受人名稱" required="true"/>
+					<Input name="Name1" id="Name1_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Name1', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:70, nullable:false } }"/>
+					<Label text="LC 稅基金額" required="true"/>
+					<Input name="Basamt" id="Basamt_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Basamt', type: 'sap.ui.model.odata.type.Decimal' , constraints:{ precision:24, scale:3, nullable:false } }"/>
+					<Label text="本國貨幣稅" required="true"/>
+					<Input name="Taxamt" id="Taxamt_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Taxamt', type: 'sap.ui.model.odata.type.Decimal' , constraints:{ precision:24, scale:3, nullable:false } }"/>
+					<Label text="金額 (LC)" required="true"/>
+					<Input name="Tolamt" id="Tolamt_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Tolamt', type: 'sap.ui.model.odata.type.Decimal' , constraints:{ precision:24, scale:3, nullable:false } }"/>
+					<Label text="幣別" required="true"/>
+					<Input name="Waers" id="Waers_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Waers', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:5, nullable:false } }"/>
+					<Label text="科目備註" required="true"/>
+					<Input name="Kverm" id="Kverm_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Kverm', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30, nullable:false } }"/>
+					<Label text="載具顯碼id" required="true"/>
+					<Input name="Carrierid1" id="Carrierid1_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Carrierid1', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:64, nullable:false } }"/>
+					<Label text="Status" required="true"/>
+					<Input name="Status" id="Status_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'Status', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:4, nullable:false } }"/>
+					
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
